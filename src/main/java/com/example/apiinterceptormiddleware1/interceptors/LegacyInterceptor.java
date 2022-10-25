@@ -1,5 +1,6 @@
 package com.example.apiinterceptormiddleware1.interceptors;
 
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
@@ -11,7 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 public class LegacyInterceptor implements HandlerInterceptor {
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)throws Exception {
         if (request.getRequestURL().toString().contains("/legacy")) {
-            response.setStatus(404);
+            response.setStatus(410);
             return false;
         } else {
             return true;
